@@ -24,7 +24,8 @@ class Example2Controller extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {
+    public function create()
+    {
         return view('article-create');
     }
 
@@ -33,21 +34,18 @@ class Example2Controller extends Controller
     //  */
     public function store(Request $request)
     {
-        // dd('hasd');
+        $youtubeUrl = $request->thumbnail;
+
+        // Ambil ID Video YouTube
+        $youtubeId = $this->getYouTubeVideoId($youtubeUrl);
+
         try {
-            $image = $request->file('thumbnail'); 
-
-            $imageData = file_get_contents($image->getRealPath());
-            $imageType = $image->getMimeType(); // Contohnya: 'image/jpeg'    
-            $base64Image = base64_encode($imageData);
-            $imageUri = 'data:' . $imageType . ';base64,' . $base64Image;
-
-
             CMSModel::create([
                 'title' => $request->title,
+                'category' => $request->category,
                 'author' => $request->author,
                 'publication_date' => $request->publication_date,
-                'thumbnail' => $imageUri,
+                'thumbnail' => $youtubeId,
                 'description' => $request->description,
             ]);
             return redirect()->intended('cms');
@@ -56,6 +54,32 @@ class Example2Controller extends Controller
         } catch (\Exception $e) {
             Log::error('Store- Terjadi kesalahan: ' . $e->getMessage());
         }
+    }
+
+    private function  getYouTubeVideoId($url)
+    {
+        // Parse URL
+        $parsedUrl = parse_url($url);
+
+        // Cek apakah bagian 'host' ada
+        if (!isset($parsedUrl['host'])) {
+            return null; // URL tidak valid atau tidak memiliki host
+        }
+
+        // Untuk format URL pendek seperti https://youtu.be/ID
+        if ($parsedUrl['host'] == 'youtu.be') {
+            return ltrim($parsedUrl['path'], '/'); // Mengambil ID video dari path
+        }
+
+        // Untuk format URL standar seperti https://www.youtube.com/watch?v=ID
+        if (strpos($parsedUrl['host'], 'youtube.com') !== false) {
+            if (isset($parsedUrl['query'])) {
+                parse_str($parsedUrl['query'], $queryParams);
+                return $queryParams['v'] ?? null; 
+            }
+        }
+
+        return null;
     }
 
     // /**

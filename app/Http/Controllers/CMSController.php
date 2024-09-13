@@ -17,7 +17,7 @@ class CMSController extends Controller
             $data = CMSModel::all();
             return response()->json(compact('data'));
         }
-
+        
         return view('article');
     }
 

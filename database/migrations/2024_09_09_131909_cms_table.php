@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('cms', function (Blueprint $table) {
             $table->id();
+            $table->string('category');
             $table->string('title');
             $table->string('author');
             $table->date('publication_date');
