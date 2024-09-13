@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('author');
             $table->date('publication_date');
             $table->string('thumbnail');
+            $table->string('youtube')->nullable();
             $table->text('description');
             $table->timestamps();
         });

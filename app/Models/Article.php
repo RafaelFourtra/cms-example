@@ -15,6 +15,7 @@ class Article extends Model
         'author',
         'publication_date',
         'thumbnail',
+        'youtube',
         'description'
     ];
 }

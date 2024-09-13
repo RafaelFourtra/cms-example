@@ -30,6 +30,7 @@ class ArticleRequest extends FormRequest
             'author' => 'required',
             'publication_date' => 'required',
             'thumbnail' => 'required',
+            'youtube' => 'nullable',
             'description' => 'required',
         ];
     }

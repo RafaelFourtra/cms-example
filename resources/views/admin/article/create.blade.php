@@ -56,6 +56,12 @@
                                     <input type="file" id="thumbnail" class="form-control"name="thumbnail" placeholder="">
                                 </div>
                             </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="youtube">Iframe Youtube</label>
+                                    <input type="text" id="youtube" class="form-control"name="youtube" placeholder="">
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="description">Description</label>
