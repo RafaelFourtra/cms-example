@@ -19,8 +19,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [ExampleController::class, 'index'])->name('index.art');
+Route::get('/', function () {
+    return to_route('pages.articles.index');
+});
 Route::get('/detail/{id}', [ExampleController::class, 'edit'])->name('detail.edit');
 Route::resource('cms', Example2Controller::class);
+
+Route::prefix('pages')->name('pages.')->group(function () {
+    Route::resource('articles', \App\Http\Controllers\ArticleController::class)->only(['index', 'show']);
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('articles/datatables', [\App\Http\Controllers\Admin\ArticleController::class, 'datatables'])->name('articles.datatables');
+    Route::resource('articles', \App\Http\Controllers\Admin\ArticleController::class);
+});
 
 
