@@ -251,14 +251,6 @@
             },
             {
                 data: "thumbnail",
-                render: function(data) {
-                    // Jika data thumbnail tersedia, tampilkan gambar
-                    if (data) {
-                        return '<img src="' + data + '" alt="Thumbnail" style="width: 100px; height: auto;"/>';
-                    }
-                    // Jika tidak ada data thumbnail, tampilkan teks atau gambar default
-                    return 'No Image';
-                }
             },
         ];
 
