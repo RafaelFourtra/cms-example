@@ -26,7 +26,7 @@ class ArticleRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             'author' => 'required',
             'publication_date' => 'required',
             'thumbnail' => 'required',

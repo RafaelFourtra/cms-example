@@ -56,7 +56,7 @@
     const showArticles = () => {
         const columns = [
             {
-                data: 'category',
+                data: 'category.category',
                 name: 'category'
             },
             {

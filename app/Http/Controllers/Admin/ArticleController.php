@@ -7,6 +7,7 @@ use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use App\Models\CategoryModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\DataTables;
@@ -15,7 +16,7 @@ class ArticleController extends Controller
 {
     public function datatables(Request $request)
     {
-        $articles = Article::query()->get();
+        $articles = Article::with('category')->get();
 
         return DataTables::of($articles)
             ->editColumn('thumbnail', function($row) {
@@ -33,6 +34,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
+       
         return view('admin.article.index');
     }
 
@@ -41,7 +43,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.article.create');
+        $data = CategoryModel::all();
+        return view('admin.article.create', compact('data'));
     }
 
     /**

@@ -15,32 +15,31 @@
                     {{-- <a href="{{ route('cms.create') }}"><button class="btn btn-primary">Create</button></a> --}}
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data" id="form_article">
+                    <form action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data"
+                        id="form_article">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label for="category">Category</label>
-                                    <select class="form-select" id="category" name="category">
+                                    <select class="form-select" id="category" name="category_id">
                                         <option disabled selected></option>
-                                        <option value="Diabetes">Diabetes</option>
-                                        <option value="Cancer">Cancer</option>
-                                        <option value="Monkey Pox">Monkey Pox</option>
+                                        @foreach ($data as $item)
+                                            <option value="{{ $item->id }}">{{ $item->category }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label for="titile">Title</label>
-                                    <input type="text" id="titile" class="form-control" placeholder=""
-                                        name="title">
+                                    <input type="text" id="titile" class="form-control" placeholder="" name="title">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label for="author">Author</label>
-                                    <input type="text" id="author" class="form-control" placeholder=""
-                                        name="author">
+                                    <input type="text" id="author" class="form-control" placeholder="" name="author">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
@@ -53,7 +52,8 @@
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label for="thumbnail">Thumbnail</label>
-                                    <input type="file" id="thumbnail" class="form-control"name="thumbnail" placeholder="">
+                                    <input type="file" id="thumbnail" class="form-control"name="thumbnail"
+                                        placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">

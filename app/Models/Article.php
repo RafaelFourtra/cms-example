@@ -11,11 +11,16 @@ class Article extends Model
 
     protected $fillable = [
         'title',
-        'category',
+        'category_id',
         'author',
         'publication_date',
         'thumbnail',
         'youtube',
         'description'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(CategoryModel::class, 'category_id');
+    }
 }

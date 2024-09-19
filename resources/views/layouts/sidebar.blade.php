@@ -58,6 +58,18 @@
                     <span>Articles</span>
                 </a>
             </li>
+            <li @class(['sidebar-item', 'active' => request()->is('admin/category*')])>
+                <a href="{{ route('admin.category.index') }}" class='sidebar-link'>
+                    <i class="bi bi-newspaper"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+            <li @class(['sidebar-item', 'active' => request()->is('admin/profile*')])>
+                <a href="{{ route('admin.profile.index') }}" class='sidebar-link'>
+                    <i class="bi bi-newspaper"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
