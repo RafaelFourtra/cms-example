@@ -43,7 +43,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="{{ route('home.index.web') }}" class="nav-item nav-link">Home</a>
                 {{-- <a href="about.html" class="nav-item nav-link">About</a> --}}
                 {{-- <a href="service.html" class="nav-item nav-link">Services</a> --}}
                 <div class="nav-item dropdown">
@@ -52,7 +52,8 @@
                     </a>
                     <div class="dropdown-menu m-0">
                         @foreach ($category as $item)
-                            <a href="{{ route('pages.articles.index', ['category' => $item->id]) }}" class="dropdown-item">{{ $item->category }}</a>
+                            <a href="{{ route('pages.articles.index', ['category' => $item->id]) }}"
+                                class="dropdown-item">{{ $item->category }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -76,16 +77,7 @@
     </nav>
 
     <!-- Header Start -->
-    <div class="container-fluid bg-breadcrumb">
-        <div class="container text-center py-5" style="max-width: 900px;">
-            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Blog</h4>
-            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active text-primary">Blog</li>
-            </ol>
-        </div>
-    </div>
+
     <!-- Header End -->
 </div>
 <!-- Navbar & Hero End -->

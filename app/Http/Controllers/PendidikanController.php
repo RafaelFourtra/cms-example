@@ -10,10 +10,13 @@ class PendidikanController extends Controller
 {
     public function index(Request $request)
     {
-
+        if ($request->ajax()) {
         $data = PendidikanModel::all();
 
+        // var_dump($data);
+
         return response()->json(compact('data'));
+        }
     }
 
     /**

@@ -2,6 +2,16 @@
 @section('title', 'Blog')
 
 @section('content')
+    <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Blog</h4>
+            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item active text-primary">Blog</li>
+            </ol>
+        </div>
+    </div>
     <div class="container-fluid blog py-5">
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
@@ -18,10 +28,11 @@
                         <div class="blog-img mb-4">
                             <img src="{{ asset($article->thumbnail) }}" class="img-fluid w-100 rounded" alt="">
                             <div class="blog-title">
-                                <a href="#" class="btn">{{$article->category->category}}</a>
+                                <a href="#" class="btn">{{ $article->category->category }}</a>
                             </div>
                         </div>
-                        <a href="{{ route('pages.articles.show', $article->id) }}" class="h4 d-inline-block mb-3">{{$article->title}}</a>
+                        <a href="{{ route('pages.articles.show', $article->id) }}"
+                            class="h4 d-inline-block mb-3">{{ $article->title }}</a>
                         {{-- <div class="mb-4">
                             {!! $article->description !!}
                         </div> --}}
@@ -29,8 +40,8 @@
                             <img src="{{ asset('assets1/img/testimonial-1.jpg') }}" class="img-fluid rounded-circle"
                                 style="width: 60px; height: 60px;" alt="">
                             <div class="ms-3">
-                                <h5>{{$article->author}}</h5>
-                                <p class="mb-0">{{$article->publication_date}}</p>
+                                <h5>{{ $article->author }}</h5>
+                                <p class="mb-0">{{ $article->publication_date }}</p>
                             </div>
                         </div>
                     </div>

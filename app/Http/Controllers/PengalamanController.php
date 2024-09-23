@@ -10,10 +10,12 @@ class PengalamanController extends Controller
 {
     public function index(Request $request)
     {
+        if ($request->ajax()) {
 
-        $data = PengalamanModel::all();
+            $data = PengalamanModel::all();
 
-        return response()->json(compact('data'));
+            return response()->json(compact('data'));
+        }
     }
 
     /**
@@ -142,4 +144,3 @@ class PengalamanController extends Controller
         }
     }
 }
-
