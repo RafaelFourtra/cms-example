@@ -53,30 +53,7 @@
             style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item">
-                        <a href="index.html" class="p-0">
-                            <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Stocker</h4>
-                            <!-- <img src="{{ asset('assets1/img/logo.png') }}" alt="Logo"> -->
-                        </a>
-                        <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit
-                            amet, consectetur adipiscing...</p>
-                        <div class="d-flex">
-                            <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
-                                <i class="fas fa-apple-alt text-white"></i>
-                                <div class="ms-3">
-                                    <small class="text-white">Download on the</small>
-                                    <h6 class="text-white">App Store</h6>
-                                </div>
-                            </a>
-                            <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
-                                <i class="fas fa-play text-primary"></i>
-                                <div class="ms-3">
-                                    <small class="text-white">Get it on</small>
-                                    <h6 class="text-white">Google Play</h6>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                   
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-2">
                     <div class="footer-item">

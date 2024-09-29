@@ -13,15 +13,12 @@ class ProfileController extends Controller
     public function index()
     {
         $data = ProfileModel::orderBy('id', 'DESC')->first();
-           
 
-        if (!$data) {
-            abort(404);
-        } else {
+        if (isset($data)) {
             $dataPend = PendidikanModel::where('profile_id', $data->id)->get();
             $dataPeng = PengalamanModel::where('profile_id', $data->id)->get();
-
         }
+
         $category = CategoryModel::all();
         // dd($data);
         return view('web.pages.profile.index', compact('data', 'category', 'dataPend', 'dataPeng'));
