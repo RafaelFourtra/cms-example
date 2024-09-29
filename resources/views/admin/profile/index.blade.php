@@ -82,7 +82,8 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="foto">Foto</label>
-                                            <input type="file" id="foto" class="form-control" name="foto" {{ isset($data) ? '' : 'required' }}>
+                                            <input type="file" id="foto" class="form-control" name="foto"
+                                                {{ isset($data) ? '' : 'required' }}>
                                         </div>
                                     </div>
                                     @if (isset($data->foto))
@@ -93,7 +94,8 @@
                                                 <label for="fotosebelumnya">Foto Sebelumnya</label><br>
                                                 <img style="width: 300px"
                                                     src="{{ asset('resources/img/profile/' . $data->foto) }}">
-                                                <input type="hidden" name="foto_edit" id="foto_edit" value="{{ isset($data) ? $data->foto : '' }}">
+                                                <input type="hidden" name="foto_edit" id="foto_edit"
+                                                    value="{{ isset($data) ? $data->foto : '' }}">
                                             </div>
                                         </div>
                                     @endif
@@ -281,9 +283,6 @@
     <script src="{{ asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            var urltest = "{{ route('admin.pendidikan.index') }}"
-            console.log(urltest);
-            
             showPendidikan()
             showPengalaman()
             $('#btn-create-pengalaman').click(function() {
@@ -334,6 +333,133 @@
                         // });
                         console.log(response);
                         window.location.href = response.redirect
+                    },
+                    error: function(res) {
+
+                        // try {
+                        //     const errors = JSON.parse(res.responseText).errors;
+                        //     for (const fieldName in errors) {
+                        //         const input = $(`#${fieldName}`);
+                        //         const errorMessage = errors[fieldName][0];
+                        //         input.addClass('border border-danger');
+                        //         $(`.error-message-${fieldName}`).text(
+                        //             errorMessage).addClass('text-danger');
+                        //     }
+
+
+                        // } catch (e) {
+                        //     Swal.fire({
+                        //         title: "Error",
+                        //         text: "An error occurred in the system. Please try again later.",
+                        //         icon: "error",
+                        //         onClose: function() {
+                        //             $('#modal-create').modal('hide')
+                        //         }
+                        //     });
+                        // }
+                    }
+                })
+            });
+            form - create - pendidikan
+
+            $('#form-create-pendidikan ').on('submit', function(e) {
+                e.preventDefault()
+                const url = this.getAttribute('action')
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    // beforeSend: function() {
+                    //     Swal.fire({
+                    //         allowOutsideClick: false,
+                    //         title: 'Please Wait',
+                    //         text: 'Your request is being processed. This may take a moment.',
+                    //         showCancelButton: false,
+                    //         showConfirmButton: false,
+                    //         didOpen: () => {
+                    //             Swal.showLoading();
+                    //         }
+                    //     });
+                    // },
+                    success: function(response) {
+                        // Swal.fire({
+                        //     title: "Succcess",
+                        //     text: "Data added successfully!",
+                        //     icon: "success",
+                        // });
+                        $(this).trigger('reset')
+                        $('#modal-create-pendidikan').modal('hide')
+                        showPendidikan()
+
+                    },
+                    error: function(res) {
+
+                        // try {
+                        //     const errors = JSON.parse(res.responseText).errors;
+                        //     for (const fieldName in errors) {
+                        //         const input = $(`#${fieldName}`);
+                        //         const errorMessage = errors[fieldName][0];
+                        //         input.addClass('border border-danger');
+                        //         $(`.error-message-${fieldName}`).text(
+                        //             errorMessage).addClass('text-danger');
+                        //     }
+
+
+                        // } catch (e) {
+                        //     Swal.fire({
+                        //         title: "Error",
+                        //         text: "An error occurred in the system. Please try again later.",
+                        //         icon: "error",
+                        //         onClose: function() {
+                        //             $('#modal-create').modal('hide')
+                        //         }
+                        //     });
+                        // }
+                    }
+                })
+            });
+
+            $('#form-create-pengalaman ').on('submit', function(e) {
+                e.preventDefault()
+                const url = this.getAttribute('action')
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    // beforeSend: function() {
+                    //     Swal.fire({
+                    //         allowOutsideClick: false,
+                    //         title: 'Please Wait',
+                    //         text: 'Your request is being processed. This may take a moment.',
+                    //         showCancelButton: false,
+                    //         showConfirmButton: false,
+                    //         didOpen: () => {
+                    //             Swal.showLoading();
+                    //         }
+                    //     });
+                    // },
+                    success: function(response) {
+                        // Swal.fire({
+                        //     title: "Succcess",
+                        //     text: "Data added successfully!",
+                        //     icon: "success",
+                        // });
+                        $(this).trigger('reset')
+                        $('#modal-create-pengalaman').modal('hide')
+                        showPengalaman()
+
                     },
                     error: function(res) {
 
