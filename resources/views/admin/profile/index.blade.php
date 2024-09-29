@@ -299,9 +299,9 @@
                 var id = $('#id').val()
 
                 if (id) {
-                    var url = baseUrl + `/admin/profile/${id}`;
+                    var url = `{{ route('admin.profile.update', ['profile' => ${id} ])}}`;
                 } else {
-                    url = baseUrl + `/admin/profile/`;
+                    url = "{{ route('admin.profile.store')}}";
                 }
 
                 $.ajax({
