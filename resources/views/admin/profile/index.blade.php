@@ -295,14 +295,12 @@
 
             $('#form_profile').on('submit', function(e) {
                 e.preventDefault()
-                var baseUrl = "{{ url('/') }}";
-                var id = $('#id').val()
 
-                if (id) {
-                    var url = `{{ route('admin.profile.update', ['profile' => ${id} ])}}`;
-                } else {
-                    url = "{{ route('admin.profile.store')}}";
-                }
+                var updateUrl =
+                "{{ route('admin.profile.update', ['profile' => '__ID__']) }}"; // Placeholder
+                var id = $('#id').val();
+
+                var url = id ? updateUrl.replace('__ID__', id) : "{{ route('admin.profile.store') }}";
 
                 $.ajax({
                     url: url,
