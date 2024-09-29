@@ -79,6 +79,25 @@
                                                 value="{{ isset($data) ? $data->tanggallahir : null }}" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="foto">Foto</label>
+                                            <input type="file" id="foto" class="form-control" name="foto" {{ isset($data) ? '' : 'required' }}>
+                                        </div>
+                                    </div>
+                                    @if (isset($data->foto))
+                                        <div class="col-md-6 col-12">
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fotosebelumnya">Foto Sebelumnya</label><br>
+                                                <img style="width: 300px"
+                                                    src="{{ asset('resources/img/profile/' . $data->foto) }}">
+                                                <input type="hidden" name="foto_edit" id="foto_edit" value="{{ isset($data) ? $data->foto : '' }}">
+                                            </div>
+                                        </div>
+                                    @endif
+
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit"
                                             class="btn {{ isset($data) ? 'btn-warning' : 'btn-primary' }} me-1 mb-1">{{ isset($data) ? 'Update' : 'Simpan' }}</button>
@@ -262,6 +281,9 @@
     <script src="{{ asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+            var urltest = "{{ route('admin.pendidikan.index') }}"
+            console.log(urltest);
+            
             showPendidikan()
             showPengalaman()
             $('#btn-create-pengalaman').click(function() {
@@ -282,6 +304,7 @@
                 } else {
                     url = baseUrl + `/admin/profile/`;
                 }
+
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -339,6 +362,7 @@
                 })
             });
         })
+
         function showPendidikan() {
             const columns = [{
                     data: "tingkat",
@@ -382,6 +406,7 @@
                 ],
             });
         }
+
         function showPengalaman() {
             const columns = [{
                     data: "institusi",

@@ -43,12 +43,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="{{ route('home.index.web') }}" class="nav-item nav-link">Home</a>
+                <a href="{{ route('pages.home.index') }}" class="nav-item nav-link">Home</a>
                 {{-- <a href="about.html" class="nav-item nav-link">About</a> --}}
                 {{-- <a href="service.html" class="nav-item nav-link">Services</a> --}}
+                <a href="{{ route('pages.profile.index') }}" class="nav-item nav-link">Profile</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                        <span class="dropdown-toggle">Blog</span>
+                        <span class="deropdown-toggle">Blog</span>
                     </a>
                     <div class="dropdown-menu m-0">
                         @foreach ($category as $item)

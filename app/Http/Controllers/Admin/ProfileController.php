@@ -34,12 +34,20 @@ class ProfileController extends Controller
                 'tempatlahir' => ['required'],
             ]);
 
+            $path = public_path('resources/img/profile/');
+            if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+                $file = $request->file('foto');
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->move($path, $fileName);
+            }
+
             ProfileModel::create([
                 'nama' => $request->nama,
                 'gelardepan' => $request->gelardepan,
                 'gelarbelakang' => $request->gelarbelakang,
                 'tanggallahir' => $request->tanggallahir,
                 'tempatlahir' => $request->tempatlahir,
+                'foto' => $fileName,
             ]);
 
             return response()->json([
@@ -92,6 +100,17 @@ class ProfileController extends Controller
                 'tempatlahir' => ['required'],
             ]);
 
+            $fileName = $request->foto_edit;
+            $path = public_path('resources/img/profile/');
+            if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+                if (file_exists($path . $fileName)) {
+                    unlink($path .  $fileName);
+                }
+                $file = $request->file('foto');
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->move($path,  $fileName);
+            }
+
             $profile = ProfileModel::findOrFail($id);
             $profile->update([
                 'nama' => $request->nama,
@@ -99,11 +118,13 @@ class ProfileController extends Controller
                 'gelarbelakang' => $request->gelarbelakang,
                 'tanggallahir' => $request->tanggallahir,
                 'tempatlahir' => $request->tempatlahir,
+                'foto' => $fileName,
             ]);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Success',
+                'redirect' => route('admin.profile.index')
             ], 200);
         } catch (\Illuminate\Validation\ValidationException $e) {
             Log::error('Update Master Profile - Terjadi kesalahan: ' . $e->getMessage());

@@ -12,9 +12,7 @@ class PendidikanController extends Controller
     {
         if ($request->ajax()) {
         $data = PendidikanModel::all();
-
         // var_dump($data);
-
         return response()->json(compact('data'));
         }
     }

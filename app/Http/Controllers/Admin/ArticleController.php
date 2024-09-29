@@ -19,10 +19,10 @@ class ArticleController extends Controller
         $articles = Article::with('category')->get();
 
         return DataTables::of($articles)
-            ->editColumn('thumbnail', function($row) {
+            ->editColumn('thumbnail', function ($row) {
                 return '<img src="' . asset($row->thumbnail) . '" style="width: 200px" alt="Article">';
             })
-            ->addColumn('action', function($row) {
+            ->addColumn('action', function ($row) {
                 return '';
             })
             ->rawColumns(['action', 'thumbnail'])
@@ -34,7 +34,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-       
+
         return view('admin.article.index');
     }
 

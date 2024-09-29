@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('gelarbelakang');
             $table->date('tanggallahir');
             $table->string('tempatlahir');
+            $table->string('foto');
             $table->timestamps();
         });
     }
