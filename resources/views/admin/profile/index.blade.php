@@ -360,7 +360,6 @@
                     }
                 })
             });
-            form - create - pendidikan
 
             $('#form-create-pendidikan ').on('submit', function(e) {
                 e.preventDefault()
