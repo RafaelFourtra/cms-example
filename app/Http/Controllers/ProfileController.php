@@ -12,15 +12,18 @@ class ProfileController extends Controller
 {
     public function index()
     {
-            $data = ProfileModel::orderBy('id', 'DESC')->first();
+        $data = ProfileModel::orderBy('id', 'DESC')->first();
+           
+
+        if (!$data) {
+            abort(404);
+        } else {
             $dataPend = PendidikanModel::where('profile_id', $data->id)->get();
             $dataPeng = PengalamanModel::where('profile_id', $data->id)->get();
 
-            if (!$data) {
-                abort(404);
-            }
-            $category = CategoryModel::all();
-            // dd($data);
-            return view('web.pages.profile.index', compact('data', 'category', 'dataPend', 'dataPeng'));
+        }
+        $category = CategoryModel::all();
+        // dd($data);
+        return view('web.pages.profile.index', compact('data', 'category', 'dataPend', 'dataPeng'));
     }
 }
