@@ -1,12 +1,17 @@
 <?php
 
+use App\Http\Controllers\Admin\BentukKegiatanController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FAQController;
+use App\Http\Controllers\Admin\InfoController;
+use App\Http\Controllers\Admin\OpeningController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Example2Controller;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PengalamanController;
+use App\Models\OpeningModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,16 +31,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',  [HomeController::class, 'index'])->name('home.index.web');
 
-Route::get('/detail/{id}', [ExampleController::class, 'edit'])->name('detail.edit');
-
-Route::resource('cms', Example2Controller::class);
 
 Route::prefix('pages')->name('pages.')->group(function () {
     Route::resource('articles', \App\Http\Controllers\ArticleController::class)->only(['index', 'show']);
     Route::resource('home', \App\Http\Controllers\HomeController::class)->only(['index', 'show']);
     Route::resource('profile', \App\Http\Controllers\ProfileController::class)->only(['index', 'show']);
-
-
     
 });
 
@@ -46,9 +46,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('profile', ProfileController::class);
     Route::resource('pendidikan', PendidikanController::class);
     Route::resource('pengalaman', PengalamanController::class);
-
-
-
+    Route::resource('info', InfoController::class);
+    Route::resource('opening', OpeningController::class);
+    Route::resource('bentukkegiatan', BentukKegiatanController::class);
+    Route::resource('faq', FAQController::class);
 });
 
 

@@ -70,6 +70,30 @@
                     <span>Profile</span>
                 </a>
             </li>
+            <li @class(['sidebar-item', 'active' => request()->is('admin/opening*')])>
+                <a href="{{ route('admin.opening.index') }}" class='sidebar-link'>
+                    <i class="bi bi-newspaper"></i>
+                    <span>Opening</span>
+                </a>
+            </li>
+            <li @class(['sidebar-item', 'active' => request()->is('admin/bentukkegiatan*')])>
+                <a href="{{ route('admin.bentukkegiatan.index') }}" class='sidebar-link'>
+                    <i class="bi bi-newspaper"></i>
+                    <span>Bentuk Kegiatan</span>
+                </a>
+            </li>
+            <li @class(['sidebar-item', 'active' => request()->is('admin/info*')])>
+                <a href="{{ route('admin.info.index') }}" class='sidebar-link'>
+                    <i class="bi bi-newspaper"></i>
+                    <span>Info</span>
+                </a>
+            </li>
+            <li @class(['sidebar-item', 'active' => request()->is('admin/faq*')])>
+                <a href="{{ route('admin.faq.index') }}" class='sidebar-link'>
+                    <i class="bi bi-newspaper"></i>
+                    <span>FAQ</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
