@@ -10,23 +10,34 @@
                 <div class="col-md-7 col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
                     <div>
                         <h4 class="text-primary">Profile</h4>
-                        <h1 class="display-5 mb-4">{{ $data->gelardepan }}, {{ $data->nama }}, {{ $data->gelarbelakang }}
+                        <h1 class="display-5 mb-4">{{ $data->gelardepan ?? 'Ir.' }}, {{ $data->nama ?? 'Yegar' }},
+                            {{ $data->gelarbelakang ?? 'PHD' }}
                         </h1>
-                        <p class="mb-4">Tanggal & Tempat Lahir : {{ $data->tanggallahir }}, {{ $data->tempatlahir }}</p>
+                        <p class="mb-4">Tanggal & Tempat Lahir : {{ $data->tanggallahir ?? '22-05-1998' }},
+                            {{ $data->tempatlahir ?? 'Surakarta' }}</p>
                         <div class="row g-4">
                             <div class="col-md-12">
                                 <div class="d-flex">
                                     <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
                                     <div class="ms-4">
                                         <h4>Pendidikan</h4>
-                                        @foreach ($dataPend as $item)
+                                        @if (isset($dataPend))
+                                            @foreach ($dataPend as $item)
+                                                <p style="color: rgb(29, 29, 29);  margin-top:10px;"><span
+                                                        style="margin-bottom:2px;">-</span> {{ $item->tingkat }} -
+                                                    {{ $item->institusi }}
+                                                    ({{ \Carbon\Carbon::parse($item->tahunmasuk)->format('Y') }} -
+                                                    {{ \Carbon\Carbon::parse($item->tahunselesai)->format('Y') }})
+                                                </p>
+                                            @endforeach
+                                        @else
                                             <p style="color: rgb(29, 29, 29);  margin-top:10px;"><span
-                                                    style="margin-bottom:2px;">-</span> {{ $item->tingkat }} -
-                                                {{ $item->institusi }}
-                                                ({{ \Carbon\Carbon::parse($item->tahunmasuk)->format('Y') }} -
-                                                {{ \Carbon\Carbon::parse($item->tahunselesai)->format('Y') }})
+                                                    style="margin-bottom:2px;">-</span> SMA -
+                                                Bagimu Negeri
+                                                (2011 - 2012)
                                             </p>
-                                        @endforeach
+                                        @endif
+
 
                                     </div>
                                 </div>
@@ -36,15 +47,25 @@
                                     <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
                                     <div class="ms-4">
                                         <h4>Pengalaman</h4>
-                                        @foreach ($dataPeng as $item)
+                                        @if (isset($dataPeng))
+                                            @foreach ($dataPeng as $item)
+                                                <p style="color: rgb(29, 29, 29);  margin-top:10px;"><span
+                                                        style="margin-bottom:2px;">-</span>
+                                                    {{ $item->institusi }}
+                                                    ({{ \Carbon\Carbon::parse($item->tahunmulai)->format('Y') }} -
+                                                    {{ \Carbon\Carbon::parse($item->tahunselesai)->format('Y') }})
+                                                </p>
+                                                <p style="margin-top: -7px;">{{ $item->deskripsi }}</p>
+                                            @endforeach
+                                        @else
                                             <p style="color: rgb(29, 29, 29);  margin-top:10px;"><span
                                                     style="margin-bottom:2px;">-</span>
-                                                {{ $item->institusi }}
-                                                ({{ \Carbon\Carbon::parse($item->tahunmulai)->format('Y') }} -
-                                                {{ \Carbon\Carbon::parse($item->tahunselesai)->format('Y') }})
+                                                BIN
+                                                (2022 - 2021)
                                             </p>
-                                            <p style="margin-top: -7px;">{{$item->deskripsi}}</p>
-                                        @endforeach
+                                            <p style="margin-top: -7px;">{{ $item->deskripsi }}</p>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
@@ -62,10 +83,13 @@
                     <div style="position: absolute; top: -20px; left: 10px; transform: rotate(90deg);">
                         <img src="{{ asset('assets1/img/about-4.png') }}" class="img-fluid" style="width: 100px; height: 150px; opacity: 0.9;" alt="">
                     </div> --}}
-                        <div class="rounded-bottom">
-                            <img src="{{ asset('resources/img/profile/' . $data->foto) }}"
-                                class="img-fluid rounded-bottom w-100" alt="">
-                        </div>
+                        @if (isset($data->foto))
+                            <div class="rounded-bottom">
+                                <img src="{{ asset('resources/img/profile/' . $data->foto) }}"
+                                    class="img-fluid rounded-bottom w-100" alt="">
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div>
