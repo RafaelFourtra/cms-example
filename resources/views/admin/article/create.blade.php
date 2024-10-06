@@ -83,7 +83,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     <script>
         $(document).ready(function() {
-            showArticles();
+           
         })
 
         ClassicEditor.create(document.querySelector("#description")).catch((error) => {
