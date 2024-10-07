@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
                                     <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
-                                        href="{{ route('admin.profile.index') }}">Profile</a>
+                                        href="{{ route('pages.profile.index') }}">Profile</a>
                                 </div>
                             </div>
                         </div>
