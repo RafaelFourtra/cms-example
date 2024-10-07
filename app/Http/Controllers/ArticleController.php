@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\CategoryModel;
+use App\Models\InfoModel;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -18,12 +19,13 @@ class ArticleController extends Controller
             $categoryFilter = '';
         }
         
-
+        $info = InfoModel::orderBy('id', 'DESC')->first();
       
         // dd($articles);
         return view('web.pages.article.index', [
             'articles' => $articles,
             'category' => CategoryModel::all(),
+            'info' => $info,
             'categoryFilter' => $categoryFilter
         ]);
     }

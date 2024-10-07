@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\BentukKegiatanModel;
 use App\Models\CategoryModel;
 use App\Models\FAQModel;
+use App\Models\InfoModel;
 use App\Models\OpeningModel;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class HomeController extends Controller
     {
         $articles = Article::query()->latest()->take(4)->get();
         $opening = OpeningModel::orderBy('id', 'DESC')->first();
+        $info = InfoModel::orderBy('id', 'DESC')->first();
         $faq = FAQModel::all();
         $bentukkegiatan = BentukKegiatanModel::all();
         return view('web.pages.home.index', [
@@ -23,6 +25,7 @@ class HomeController extends Controller
             'opening' => $opening,
             'faq' => $faq,
             'bentukkegiatan' => $bentukkegiatan,
+            'info' => $info
         ]);
     }
 }

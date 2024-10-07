@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\InfoModel;
 use App\Models\PendidikanModel;
 use App\Models\PengalamanModel;
 use App\Models\ProfileModel;
@@ -19,7 +20,8 @@ class ProfileController extends Controller
         $dataPend = PendidikanModel::where('profile_id', $data->id)->get();
         $dataPeng = PengalamanModel::where('profile_id', $data->id)->get();
         $category = CategoryModel::all();
+        $info = InfoModel::orderBy('id', 'DESC')->first();
         // dd($data);
-        return view('web.pages.profile.index', compact('data', 'category', 'dataPend', 'dataPeng'));
+        return view('web.pages.profile.index', compact('data', 'category', 'dataPend', 'dataPeng', 'info'));
     }
 }

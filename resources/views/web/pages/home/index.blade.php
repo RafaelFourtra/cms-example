@@ -15,13 +15,13 @@
                                 <h1 class="display-4 text-uppercase text-white mb-4">
                                     {{ $opening->title ??
                                         'Tingkatan Pemahaman Perumahsakitan
-                                                                        Barokah Untuk Banyak Umat' }}
+                                                                                                                                                Barokah Untuk Banyak Umat' }}
                                 </h1>
                                 <div class="d-flex justify-content-center justify-content-md-end">
                                     <p class="mb-5 fs-5" style="max-width: 70%;">
                                         {{ $opening->description ??
                                             'Tersedia banyak hal terkait perumahsakitan yang terintegrasi dan
-                                                                            implementatif dengan template dokumen kerja' }}
+                                                                                                                                                            implementatif dengan template dokumen kerja' }}
                                     </p>
                                 </div>
                                 <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
@@ -134,4 +134,40 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid faq-section pb-5">
+        <div class="container pb-5 overflow-hidden">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-primary">FAQs</h4>
+                <h1 class="display-5 mb-4">Frequently Asked Questions</h1>
+            </div>
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="accordion accordion-flush bg-light rounded p-5" id="accordionFlushSection">
+                        @foreach ($faq as $item)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        {{ $item->title ?? '' }}
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushSection">
+                                    <div class="accordion-body"> {{ $item->description ?? '' }}
+
+                                    </div>
+                                </div>
+                        @endforeach
+                    </div>
+                </div>
+                {{-- <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="bg-primary rounded">
+                        <img src="{{ asset('img/about-2.png') }}" class="img-fluid w-100" alt="">
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+    </div>
 @endsection
+
