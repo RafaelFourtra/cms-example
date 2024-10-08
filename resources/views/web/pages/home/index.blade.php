@@ -53,9 +53,7 @@
                             </div>
                             <div class="rounded-bottom p-4">
                                 <a href="#" class="h4 d-inline-block mb-4"> {{ $item->title }}</a>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                    Excepturi facilis neque nesciunt similique officiis veritatis,
-                                </p>
+                                <p class="mb-4">{!! $item->description !!}</p>
                                 <a class="btn btn-primary rounded-pill py-2 px-4"
                                     href="{{ route('pages.articles.show', $item->id) }}">Learn More</a>
                             </div>
