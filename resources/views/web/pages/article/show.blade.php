@@ -9,7 +9,7 @@
                 @if ($article->youtube == null)
                     <img src="{{ asset($article->thumbnail) }}" style="width: 700px" alt="thumbnail">
                 @else
-                    {!! $article->youtube !!}
+                    <iframe width="700" height="400" src="{{ $article->youtube }}" frameborder="0" allowfullscreen></iframe>
                 @endif
             </div>
             <p>

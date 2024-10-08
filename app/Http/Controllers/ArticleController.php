@@ -33,8 +33,29 @@ class ArticleController extends Controller
     public function show($id)
     {
         $info = InfoModel::orderBy('id', 'DESC')->first();
+        $article = Article::query()->find($id);
+
+        if ($article->youtube) {
+            $url = $article->youtube;
+    
+            // Convert 'youtu.be' links to 'youtube.com/embed'
+            if (strpos($url, 'youtu.be') !== false) {
+                $videoId = substr(parse_url($url, PHP_URL_PATH), 1);
+                $article->youtube = 'https://www.youtube.com/embed/' . $videoId . '?autoplay=1&mute=1';
+            }
+    
+            // Convert 'youtube.com/watch?v=' links to 'youtube.com/embed/'
+            elseif (strpos($url, 'watch?v=') !== false) {
+                $query = parse_url($url, PHP_URL_QUERY);
+                parse_str($query, $params);
+                $article->youtube = 'https://www.youtube.com/embed/' . $params['v'] . '?autoplay=1&mute=1';
+            }
+        }
+
+        //dd($article->youtube);
+
         return view('web.pages.article.show', [
-            'article' => Article::query()->find($id),
+            'article' => $article,
             'category' => CategoryModel::all(),
             'info' => $info
         ]);

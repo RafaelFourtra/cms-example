@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = Article::query()->latest()->take(4)->get();
+        $articles = Article::query()->latest()->take(6)->get();
         $opening = OpeningModel::orderBy('id', 'DESC')->first();
         $info = InfoModel::orderBy('id', 'DESC')->first();
         $faq = FAQModel::all();
