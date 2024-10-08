@@ -149,12 +149,12 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseTwo" aria-expanded="false"
                                         aria-controls="flush-collapseTwo">
-                                        {{ $item->title ?? '' }}
+                                        {{ $item->pertanyaan ?? '' }}
                                     </button>
                                 </h2>
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushSection">
-                                    <div class="accordion-body"> {{ $item->description ?? '' }}
+                                    <div class="accordion-body"> {{ $item->jawaban ?? '' }}
 
                                     </div>
                                 </div>
