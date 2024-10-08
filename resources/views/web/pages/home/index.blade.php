@@ -145,15 +145,15 @@
                     <div class="accordion accordion-flush bg-light rounded p-5" id="accordionFlushSection">
                         @foreach ($faq as $item)
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingTwo">
+                                <h2 class="accordion-header" id="flush-heading{{$item->id}}">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                        aria-controls="flush-collapseTwo">
+                                        data-bs-target="#flush-collapse{{$item->id}}" aria-expanded="false"
+                                        aria-controls="flush-collapse{{$item->id}}">
                                         {{ $item->pertanyaan ?? '' }}
                                     </button>
                                 </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushSection">
+                                <div id="flush-collapse{{$item->id}}" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-heading{{$item->id}}" data-bs-parent="#accordionFlushSection">
                                     <div class="accordion-body"> {{ $item->jawaban ?? '' }}
 
                                     </div>
