@@ -32,9 +32,11 @@ class ArticleController extends Controller
 
     public function show($id)
     {
+        $info = InfoModel::orderBy('id', 'DESC')->first();
         return view('web.pages.article.show', [
             'article' => Article::query()->find($id),
             'category' => CategoryModel::all(),
+            'info' => $info
         ]);
     }
 }
