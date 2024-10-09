@@ -23,7 +23,7 @@
 <div class="container-fluid position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
         <a href="" class="navbar-brand p-0">
-            <h1 class="text-primary"></i>ProQua</h1>
+            <h1 class="text-primary"></i>Hatrick</h1>
             <!-- <img src="{{ asset('assets1/img/logo.png') }}" alt="Logo"> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

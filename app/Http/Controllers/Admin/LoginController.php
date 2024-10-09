@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryModel;
+use App\Models\InfoModel;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +12,11 @@ class LoginController extends Controller
 {
     public function index()
     {
+        $info = InfoModel::orderBy('id', 'DESC')->first();
+
         return view('admin.login', [
             'category' => CategoryModel::all(),
+            'info' => $info
             ]);
     }
 
