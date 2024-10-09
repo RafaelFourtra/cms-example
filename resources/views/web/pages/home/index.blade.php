@@ -1,6 +1,24 @@
 @extends('layouts.app')
 @section('title', 'Home')
 
+<style>
+.service-img {
+    width: 100%;
+    height: 250px; /* Atur tinggi yang seragam untuk semua gambar */
+    background-color: #f0f0f0; /* Warna abu-abu jika gambar terlalu kecil */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar mengisi area dengan proporsi yang tetap */
+}
+
+</style>
+
 @section('content')
     <div class="header-carousel owl-carousel">
         <div class="header-carousel-item">
