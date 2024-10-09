@@ -11,6 +11,7 @@ use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PengalamanController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Models\OpeningModel;
 use Illuminate\Support\Facades\Route;
 
@@ -40,16 +41,19 @@ Route::prefix('pages')->name('pages.')->group(function () {
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+    Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('articles/datatables', [\App\Http\Controllers\Admin\ArticleController::class, 'datatables'])->name('articles.datatables');
-    Route::resource('articles', \App\Http\Controllers\Admin\ArticleController::class);
-    Route::resource('category', CategoryController::class);
-    Route::resource('profile', ProfileController::class);
-    Route::resource('pendidikan', PendidikanController::class);
-    Route::resource('pengalaman', PengalamanController::class);
-    Route::resource('info', InfoController::class);
-    Route::resource('opening', OpeningController::class);
-    Route::resource('bentukkegiatan', BentukKegiatanController::class);
-    Route::resource('faq', FAQController::class);
+    Route::resource('articles', \App\Http\Controllers\Admin\ArticleController::class)->middleware('auth');
+    Route::resource('category', CategoryController::class)->middleware('auth');
+    Route::resource('profile', ProfileController::class)->middleware('auth');
+    Route::resource('pendidikan', PendidikanController::class)->middleware('auth');
+    Route::resource('pengalaman', PengalamanController::class)->middleware('auth');
+    Route::resource('info', InfoController::class)->middleware('auth');
+    Route::resource('opening', OpeningController::class)->middleware('auth');
+    Route::resource('bentukkegiatan', BentukKegiatanController::class)->middleware('auth');
+    Route::resource('faq', FAQController::class)->middleware('auth');
 });
 
 

@@ -15,6 +15,24 @@
 
     <div class="page-heading">
         <h3>Category</h3>
+        <div class="position-absolute top-0 end-0 p-3" style="margin-right: 20px; margin-top: 40px;">
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Welcome, {{ auth()->user()->name }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #f8f9fa;">
+                    <li>
+                        <form action="/admin/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                <i class="bi bi-box-arrow-right"></i>
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="page-content">
         <section class="row">
